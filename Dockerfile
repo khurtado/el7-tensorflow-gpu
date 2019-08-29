@@ -150,7 +150,7 @@ RUN pip install --upgrade keras
 
 RUN git clone https://github.com/jthiltges/singularity-environment.git /usr/singularity-environment/
 RUN cp -r /usr/singularity-environment/{environment,.exec,.run,.shell,singularity,.singularity.d,.test} /
-
+RUN mkdir /.singularity.d/libs
     
 ############
 # Finish up
