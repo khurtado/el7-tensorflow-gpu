@@ -114,6 +114,20 @@ RUN for MNTPOINT in \
 RUN mkdir -p /host-libs /etc/OpenCL/vendors
 
 
+# Create an empty location for nvidia executables
+RUN for NVBIN in \
+    nvidia-smi \
+    nvidia-debugdump \
+    nvidia-persistenced \
+    nvidia-cuda-mps-control \
+    nvidia-cuda-mps-server \
+  ; do \
+    touch /usr/bin/$NVBIN ; \
+  done
+
+
+
+
 
 ##############################################
 # Install TensorFlow, Keras, etc. with Python
@@ -125,14 +139,18 @@ RUN rm get-pip.py
 RUN echo "/usr/local/cuda/lib64/" >/etc/ld.so.conf.d/cuda.conf
 RUN echo "/usr/local/cuda/extras/CUPTI/lib64/" >>/etc/ld.so.conf.d/cuda.conf
 
-# Create an empty location for nvidia-smi
-RUN touch /usr/bin/nvidia-smi
-
 # Install TensorFlow GPU version
 RUN pip install --upgrade https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-1.12.0-cp27-none-linux_x86_64.whl
     
 # keras
 RUN pip install --upgrade keras
+
+#################################
+# Manually add Singularity files
+
+RUN git clone https://github.com/jthiltges/singularity-environment.git /usr/singularity-environment/
+RUN cp -r /usr/singularity-environment/{environment,.exec,.run,.shell,singularity,.singularity.d,.test} /
+
     
 ############
 # Finish up
