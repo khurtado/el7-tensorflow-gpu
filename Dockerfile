@@ -155,8 +155,7 @@ RUN mkdir /.singularity.d/libs
 #################################
 # According to: https://docs-dev.nersc.gov/cgpu/software/#shifter-with-cuda
 RUN echo "export PATH and LD_LIBRARY_PATH"
-ENTRYPOINT export PATH=/opt/shifter/bin:${PATH}
-ENTRYPOINT export LD_LIBRARY_PATH=/opt/shifter/lib:${LD_LIBRARY_PATH}
+ENTRYPOINT export PATH=/opt/shifter/bin:${PATH} && export LD_LIBRARY_PATH=/opt/shifter/lib:${LD_LIBRARY_PATH}
 
 ############
 # Finish up
