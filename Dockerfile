@@ -139,6 +139,9 @@ RUN rm get-pip.py
 RUN echo "/usr/local/cuda/lib64/" >/etc/ld.so.conf.d/cuda.conf
 RUN echo "/usr/local/cuda/extras/CUPTI/lib64/" >>/etc/ld.so.conf.d/cuda.conf
 
+# install Cython
+RUN pip install cython
+
 # Install TensorFlow GPU version
 RUN pip install --upgrade https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-1.12.0-cp27-none-linux_x86_64.whl
     
