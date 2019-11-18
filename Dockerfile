@@ -143,7 +143,7 @@ RUN echo "/usr/local/cuda/extras/CUPTI/lib64/" >>/etc/ld.so.conf.d/cuda.conf
 RUN pip install --upgrade https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-1.12.0-cp27-none-linux_x86_64.whl
     
 # keras
-RUN pip install --upgrade keras
+RUN pip install keras==2.2.5
 
 #################################
 # Manually add Singularity files
