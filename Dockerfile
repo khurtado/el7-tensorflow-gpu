@@ -148,6 +148,9 @@ RUN pip install --upgrade https://storage.googleapis.com/tensorflow/linux/gpu/te
 # keras
 RUN pip install keras==2.2.5
 
+# pytorch
+RUN pip3 install torch==1.4.0 torchvision==0.5.0
+
 #################################
 # Manually add Singularity files
 
