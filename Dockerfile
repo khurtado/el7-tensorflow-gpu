@@ -149,6 +149,8 @@ RUN pip install --upgrade https://storage.googleapis.com/tensorflow/linux/gpu/te
 RUN pip install keras==2.2.5
 
 # pytorch
+# Future required for python 2.7 support
+RUN pip install future
 RUN pip install torch==1.4.0 torchvision==0.5.0
 
 #################################
